@@ -28,11 +28,15 @@ jobs:
           REGIOFLIX_URL: ${{ secrets.REGIOFLIX_URL }}
 
 
-      - name: Guardar cambios
+            - name: Guardar cambios
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add lista.m3u canales.m3u catalogo_vod.m3u peliculas.m3u series.m3u
-          git diff --cached --quiet && exit 0
+          if git diff --cached --quiet; then
+            echo "No hay cambios que guardar."
+            exit 0
+          fi
+          git commit -m "Actualizar listas IPTV"
           git pull --rebase origin main
           git push origin main
