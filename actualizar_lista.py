@@ -1,8 +1,8 @@
 
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""MI-IPTV-MUNDIAL 4.0
-Canales + películas + series + fuente RegioFlix.
+"""MI-IPTV-MUNDIAL 5.0
+Canales por país + películas + series + RegioFlix + VOD manual.
 """
 
 from pathlib import Path
@@ -16,7 +16,6 @@ LIVE_SOURCE = "https://iptv-org.github.io/iptv/index.m3u"
 MOVIES_SOURCE = "https://raw.githubusercontent.com/OnlineM3U/publicdomainm3u/main/movies.m3u"
 SERIES_SOURCE = "https://raw.githubusercontent.com/OnlineM3U/publicdomainm3u/main/series.m3u"
 
-# RegioFlix: configurar mediante secreto de GitHub
 REGIOFLIX_SOURCE = os.environ.get("REGIOFLIX_URL", "")
 
 OUTPUTS = {
@@ -53,7 +52,7 @@ COUNTRIES = {
 def download(url):
     request = Request(
         url,
-        headers={"User-Agent": "MI-IPTV-MUNDIAL/4.0"}
+        headers={"User-Agent": "MI-IPTV-MUNDIAL/5.0"}
     )
     with urlopen(request, timeout=90) as response:
         return response.read().decode(
@@ -73,6 +72,7 @@ def set_attr(line, key, value):
     pattern = (
         r'((?:^|\s)' + re.escape(key) + r'=")[^"]*(")'
     )
+
     if re.search(pattern, line):
         return re.sub(
             pattern,
@@ -80,9 +80,11 @@ def set_attr(line, key, value):
             line,
             count=1
         )
+
     comma = line.find(",")
     if comma < 0:
         return line
+
     return line[:comma] + f' {key}="{value}"' + line[comma:]
 
 
@@ -97,6 +99,7 @@ def parse_m3u(raw):
         for line in raw.splitlines()
         if line.strip()
     ]
+
     entries = []
     i = 0
 
@@ -112,9 +115,11 @@ def parse_m3u(raw):
         while j < len(lines):
             if lines[j].startswith("#EXTINF:"):
                 break
+
             if lines[j].startswith(("http://", "https://")):
                 url = lines[j]
                 break
+
             j += 1
 
         if url:
@@ -137,8 +142,10 @@ def country_label(value):
         return "Internacional"
 
     names = []
+
     for code in codes[:3]:
         name = COUNTRIES.get(code, code)
+
         if name not in names:
             names.append(name)
 
@@ -158,9 +165,11 @@ def prepare_live(entries):
         country = country_label(
             get_attr(info, "tvg-country")
         )
+
         category = (
             get_attr(info, "group-title") or "General"
         )
+
         category = re.sub(
             r"\s+", " ", category
         ).strip()[:70] or "General"
@@ -186,6 +195,56 @@ def prepare_live(entries):
     return [(item[3], item[4]) for item in prepared]
 
 
+def is_series_entry(info, url=""):
+    name = display_name(info).lower()
+    group = get_attr(info, "group-title").lower()
+    kind = get_attr(info, "tvg-type").lower()
+
+    if kind in ("series", "serie", "tv"):
+        return True
+
+    if any(word in group for word in (
+        "series", "serie", "doramas", "dramas",
+        "temporada", "episodios", "episodios"
+    )):
+        return True
+
+    if re.search(r"\bS\d{1,2}E\d{1,2}\b", name, re.I):
+        return True
+
+    if re.search(r"\b\d{1,2}x\d{1,2}\b", name, re.I):
+        return True
+
+    return False
+
+
+def split_regioflix(entries):
+    movies = []
+    series = []
+
+    for info, url in entries:
+        if is_series_entry(info, url):
+            series.append((info, url))
+        else:
+            movies.append((info, url))
+
+    return movies, series
+
+
+def split_manual_vod(entries):
+    """Clasifica el catálogo manual usando sus etiquetas y nombres."""
+    movies = []
+    series = []
+
+    for info, url in entries:
+        if is_series_entry(info, url):
+            series.append((info, url))
+        else:
+            movies.append((info, url))
+
+    return movies, series
+
+
 def prepare_vod(entries, kind):
     prepared = []
     seen = set()
@@ -195,33 +254,48 @@ def prepare_vod(entries, kind):
             continue
 
         seen.add(url)
+
         name = display_name(info)
 
+        genre = (
+            get_attr(info, "group-title") or
+            ("Clásicos" if kind == "movie" else "Series clásicas")
+        )
+
+        genre = re.sub(
+            r"\s+", " ", genre
+        ).strip()[:60]
+
+        # Categorías asiáticas cuando la fuente las identifica.
+        lower_data = (
+            name + " " + genre + " " +
+            get_attr(info, "tvg-country")
+        ).lower()
+
+        if any(word in lower_data for word in (
+            "korea", "korean", "corea", "coreano",
+            "kr", "k-drama", "doramas"
+        )):
+            genre = "Doramas coreanos"
+
+        elif any(word in lower_data for word in (
+            "china", "chinese", "chino", "cn"
+        )):
+            genre = "Dramas chinos"
+
+        elif any(word in lower_data for word in (
+            "japan", "japanese", "japón", "japones", "jp"
+        )):
+            genre = "Series japonesas"
+
         if kind == "movie":
-            genre = (
-                get_attr(info, "group-title") or "Clásicos"
-            )
-            genre = re.sub(
-                r"\s+", " ", genre
-            ).strip()[:60] or "Clásicos"
-
-            group = f"Movies: {genre}"
+            group = f"Movies: {genre or 'Clásicos'}"
             info = set_attr(info, "tvg-type", "movie")
-            info = set_attr(info, "group-title", group)
-
         else:
-            show = (
-                get_attr(info, "group-title")
-                or name.split(" - ")[0]
-                or "Series clásicas"
-            )
-            show = re.sub(
-                r"\s+", " ", show
-            ).strip()[:70] or "Series clásicas"
-
-            group = f"Series: {show}"
+            group = f"Series: {genre or 'Series clásicas'}"
             info = set_attr(info, "tvg-type", "series")
-            info = set_attr(info, "group-title", group)
+
+        info = set_attr(info, "group-title", group)
 
         prepared.append((
             group.casefold(),
@@ -237,32 +311,6 @@ def prepare_vod(entries, kind):
     return [(item[2], item[3]) for item in prepared]
 
 
-def split_regioflix(entries):
-    movies = []
-    series = []
-
-    for info, url in entries:
-        name = display_name(info)
-        group = get_attr(info, "group-title").lower()
-        kind = get_attr(info, "tvg-type").lower()
-
-        is_series = (
-            kind == "series"
-            or "serie" in group
-            or "series" in group
-            or "temporada" in group
-            or re.search(r"\bS\d{1,2}E\d{1,2}\b", name, re.I)
-            or re.search(r"\b\d{1,2}x\d{1,2}\b", name, re.I)
-        )
-
-        if is_series:
-            series.append((info, url))
-        else:
-            movies.append((info, url))
-
-    return movies, series
-
-
 def write_m3u(path, entries):
     lines = ["#EXTM3U"]
 
@@ -270,17 +318,21 @@ def write_m3u(path, entries):
         lines.extend((info, url))
 
     temp = path.with_suffix(path.suffix + ".tmp")
+
     temp.write_text(
         "\n".join(lines) + "\n",
         encoding="utf-8"
     )
+
     os.replace(temp, path)
 
 
 def main():
-    print("=== MI-IPTV-MUNDIAL 4.0 ===")
+    print("=== MI-IPTV-MUNDIAL 5.0 ===")
 
+    # CANALES
     print("Descargando canales...")
+
     try:
         live_raw = download(LIVE_SOURCE)
         live_source_entries = parse_m3u(live_raw)
@@ -299,11 +351,13 @@ def main():
     series_entries = []
     source_errors = []
 
-    # Películas y series públicas
-    for url, kind, target in (
+    # PELÍCULAS Y SERIES DE DOMINIO PÚBLICO
+    sources = (
         (MOVIES_SOURCE, "movie", movie_entries),
         (SERIES_SOURCE, "series", series_entries),
-    ):
+    )
+
+    for url, kind, target in sources:
         try:
             print(f"Descargando {kind}...")
             target.extend(parse_m3u(download(url)))
@@ -313,7 +367,7 @@ def main():
         ) as exc:
             source_errors.append(f"{kind}: {exc}")
 
-    # RegioFlix
+    # REGIOFLIX
     if REGIOFLIX_SOURCE:
         try:
             print("Descargando RegioFlix...")
@@ -341,19 +395,35 @@ def main():
         ) as exc:
             source_errors.append(f"RegioFlix: {exc}")
 
-    # Catálogo manual anterior
+    # CATÁLOGO MANUAL: SEPARA PELÍCULAS Y SERIES
     if MANUAL_VOD.exists():
         try:
-            movie_entries.extend(
-                parse_m3u(
-                    MANUAL_VOD.read_text(
-                        encoding="utf-8-sig"
-                    )
+            print("Leyendo catálogo manual...")
+
+            manual_entries = parse_m3u(
+                MANUAL_VOD.read_text(
+                    encoding="utf-8-sig"
                 )
             )
-        except OSError as exc:
+
+            manual_movies, manual_series = split_manual_vod(
+                manual_entries
+            )
+
+            movie_entries.extend(manual_movies)
+            series_entries.extend(manual_series)
+
+            print(
+                f"Manual películas: {len(manual_movies)}"
+            )
+            print(
+                f"Manual series: {len(manual_series)}"
+            )
+
+        except (OSError, UnicodeError) as exc:
             source_errors.append(f"Manual: {exc}")
 
+    # PREPARAR CATÁLOGOS
     movies = prepare_vod(movie_entries, "movie")
     series = prepare_vod(series_entries, "series")
     vod = movies + series
@@ -364,6 +434,7 @@ def main():
 
     combined = live + vod
 
+    # GUARDAR ARCHIVOS
     try:
         write_m3u(OUTPUTS["live"], live)
         write_m3u(OUTPUTS["movies"], movies)
@@ -375,6 +446,7 @@ def main():
         print(f"Error guardando listas: {exc}")
         return 4
 
+    # RESULTADOS
     print("\n=== RESULTADOS ===")
     print(f"Canales: {len(live)}")
     print(f"Películas: {len(movies)}")
@@ -383,6 +455,7 @@ def main():
 
     if source_errors:
         print("\nAvisos:")
+
         for error in source_errors:
             print("-", error)
 
