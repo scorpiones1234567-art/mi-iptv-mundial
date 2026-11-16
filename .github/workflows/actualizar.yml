@@ -26,9 +26,7 @@ jobs:
         run: python actualizar_lista.py
         env:
           REGIOFLIX_URL: ${{ secrets.REGIOFLIX_URL }}
-
-
-            - name: Guardar cambios
+      - name: Guardar cambios
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
