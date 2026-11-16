@@ -1,8 +1,8 @@
 
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""MI-IPTV-MUNDIAL 5.0
-Canales por país + películas + series + RegioFlix + VOD manual.
+"""MI-IPTV-MUNDIAL 6.0
+Canales + películas + series + RegioFlix + DE TODO.
 """
 
 from pathlib import Path
@@ -12,18 +12,34 @@ import os
 import re
 import sys
 
+# FUENTES
 LIVE_SOURCE = "https://iptv-org.github.io/iptv/index.m3u"
-MOVIES_SOURCE = "https://raw.githubusercontent.com/OnlineM3U/publicdomainm3u/main/movies.m3u"
-SERIES_SOURCE = "https://raw.githubusercontent.com/OnlineM3U/publicdomainm3u/main/series.m3u"
+
+MOVIES_SOURCE = (
+    "https://raw.githubusercontent.com/OnlineM3U/"
+    "publicdomainm3u/main/movies.m3u"
+)
+
+SERIES_SOURCE = (
+    "https://raw.githubusercontent.com/OnlineM3U/"
+    "publicdomainm3u/main/series.m3u"
+)
+
+DE_TODO_SOURCE = (
+    "https://raw.githubusercontent.com/JMigue85/"
+    "IPTV-SV/refs/heads/main/IPTVSV.m3u"
+)
 
 REGIOFLIX_SOURCE = os.environ.get("REGIOFLIX_URL", "")
 
+# ARCHIVOS DE SALIDA
 OUTPUTS = {
     "all": Path("lista.m3u"),
     "live": Path("canales.m3u"),
     "vod": Path("catalogo_vod.m3u"),
     "movies": Path("peliculas.m3u"),
     "series": Path("series.m3u"),
+    "de_todo": Path("de_todo.m3u"),
 }
 
 MANUAL_VOD = Path("vod_manual.m3u")
@@ -52,8 +68,9 @@ COUNTRIES = {
 def download(url):
     request = Request(
         url,
-        headers={"User-Agent": "MI-IPTV-MUNDIAL/5.0"}
+        headers={"User-Agent": "MI-IPTV-MUNDIAL/6.0"}
     )
+
     with urlopen(request, timeout=90) as response:
         return response.read().decode(
             "utf-8-sig", errors="replace"
@@ -82,10 +99,15 @@ def set_attr(line, key, value):
         )
 
     comma = line.find(",")
+
     if comma < 0:
         return line
 
-    return line[:comma] + f' {key}="{value}"' + line[comma:]
+    return (
+        line[:comma]
+        + f' {key}="{value}"'
+        + line[comma:]
+    )
 
 
 def display_name(info):
@@ -152,6 +174,20 @@ def country_label(value):
     return " / ".join(names)
 
 
+def remove_duplicates(entries):
+    result = []
+    seen = set()
+
+    for info, url in entries:
+        if url in seen:
+            continue
+
+        seen.add(url)
+        result.append((info, url))
+
+    return result
+
+
 def prepare_live(entries):
     prepared = []
     seen = set()
@@ -205,7 +241,7 @@ def is_series_entry(info, url=""):
 
     if any(word in group for word in (
         "series", "serie", "doramas", "dramas",
-        "temporada", "episodios", "episodios"
+        "temporada", "episodios"
     )):
         return True
 
@@ -232,7 +268,6 @@ def split_regioflix(entries):
 
 
 def split_manual_vod(entries):
-    """Clasifica el catálogo manual usando sus etiquetas y nombres."""
     movies = []
     series = []
 
@@ -258,33 +293,36 @@ def prepare_vod(entries, kind):
         name = display_name(info)
 
         genre = (
-            get_attr(info, "group-title") or
-            ("Clásicos" if kind == "movie" else "Series clásicas")
+            get_attr(info, "group-title")
+            or (
+                "Clásicos"
+                if kind == "movie"
+                else "Series clásicas"
+            )
         )
 
         genre = re.sub(
             r"\s+", " ", genre
         ).strip()[:60]
 
-        # Categorías asiáticas cuando la fuente las identifica.
+        country = get_attr(info, "tvg-country").upper()
         lower_data = (
-            name + " " + genre + " " +
-            get_attr(info, "tvg-country")
+            name + " " + genre
         ).lower()
 
-        if any(word in lower_data for word in (
+        if country == "KR" or any(word in lower_data for word in (
             "korea", "korean", "corea", "coreano",
-            "kr", "k-drama", "doramas"
+            "k-drama", "doramas"
         )):
             genre = "Doramas coreanos"
 
-        elif any(word in lower_data for word in (
-            "china", "chinese", "chino", "cn"
+        elif country == "CN" or any(word in lower_data for word in (
+            "china", "chinese", "chino"
         )):
             genre = "Dramas chinos"
 
-        elif any(word in lower_data for word in (
-            "japan", "japanese", "japón", "japones", "jp"
+        elif country == "JP" or any(word in lower_data for word in (
+            "japan", "japanese", "japón", "japones"
         )):
             genre = "Series japonesas"
 
@@ -311,6 +349,27 @@ def prepare_vod(entries, kind):
     return [(item[2], item[3]) for item in prepared]
 
 
+def prepare_de_todo(entries):
+    prepared = []
+    seen = set()
+
+    for info, url in entries:
+        if url in seen:
+            continue
+
+        seen.add(url)
+
+        info = set_attr(
+            info,
+            "group-title",
+            "DE TODO"
+        )
+
+        prepared.append((info, url))
+
+    return prepared
+
+
 def write_m3u(path, entries):
     lines = ["#EXTM3U"]
 
@@ -328,7 +387,9 @@ def write_m3u(path, entries):
 
 
 def main():
-    print("=== MI-IPTV-MUNDIAL 5.0 ===")
+    print("=== MI-IPTV-MUNDIAL 6.0 ===")
+
+    source_errors = []
 
     # CANALES
     print("Descargando canales...")
@@ -347,11 +408,10 @@ def main():
 
     live = prepare_live(live_source_entries)
 
+    # PELÍCULAS Y SERIES
     movie_entries = []
     series_entries = []
-    source_errors = []
 
-    # PELÍCULAS Y SERIES DE DOMINIO PÚBLICO
     sources = (
         (MOVIES_SOURCE, "movie", movie_entries),
         (SERIES_SOURCE, "series", series_entries),
@@ -383,19 +443,15 @@ def main():
             movie_entries.extend(regio_movies)
             series_entries.extend(regio_series)
 
-            print(
-                f"RegioFlix películas: {len(regio_movies)}"
-            )
-            print(
-                f"RegioFlix series: {len(regio_series)}"
-            )
+            print(f"RegioFlix películas: {len(regio_movies)}")
+            print(f"RegioFlix series: {len(regio_series)}")
 
         except (
             HTTPError, URLError, TimeoutError, OSError
         ) as exc:
             source_errors.append(f"RegioFlix: {exc}")
 
-    # CATÁLOGO MANUAL: SEPARA PELÍCULAS Y SERIES
+    # CATÁLOGO MANUAL
     if MANUAL_VOD.exists():
         try:
             print("Leyendo catálogo manual...")
@@ -413,26 +469,51 @@ def main():
             movie_entries.extend(manual_movies)
             series_entries.extend(manual_series)
 
-            print(
-                f"Manual películas: {len(manual_movies)}"
-            )
-            print(
-                f"Manual series: {len(manual_series)}"
-            )
-
         except (OSError, UnicodeError) as exc:
             source_errors.append(f"Manual: {exc}")
+
+    # DE TODO
+    de_todo = []
+
+    try:
+        print("Descargando lista DE TODO...")
+
+        de_todo_entries = parse_m3u(
+            download(DE_TODO_SOURCE)
+        )
+
+        if not de_todo_entries:
+            raise ValueError("La lista no contiene entradas M3U válidas")
+
+        de_todo = prepare_de_todo(de_todo_entries)
+
+        print(f"Entradas DE TODO: {len(de_todo)}")
+
+    except (
+        HTTPError, URLError, TimeoutError, OSError, ValueError
+    ) as exc:
+        source_errors.append(f"DE TODO: {exc}")
+
+        # Si la descarga falla, conservar el archivo anterior.
+        if OUTPUTS["de_todo"].exists():
+            try:
+                de_todo = parse_m3u(
+                    OUTPUTS["de_todo"].read_text(
+                        encoding="utf-8-sig"
+                    )
+                )
+            except (OSError, UnicodeError):
+                de_todo = []
 
     # PREPARAR CATÁLOGOS
     movies = prepare_vod(movie_entries, "movie")
     series = prepare_vod(series_entries, "series")
     vod = movies + series
 
-    if not vod:
-        print("No se obtuvo VOD. Listas anteriores conservadas.")
-        return 3
-
-    combined = live + vod
+    # EVITAR DUPLICADOS EN LA LISTA GENERAL
+    combined = remove_duplicates(
+        live + vod + de_todo
+    )
 
     # GUARDAR ARCHIVOS
     try:
@@ -440,6 +521,7 @@ def main():
         write_m3u(OUTPUTS["movies"], movies)
         write_m3u(OUTPUTS["series"], series)
         write_m3u(OUTPUTS["vod"], vod)
+        write_m3u(OUTPUTS["de_todo"], de_todo)
         write_m3u(OUTPUTS["all"], combined)
 
     except OSError as exc:
@@ -447,11 +529,12 @@ def main():
         return 4
 
     # RESULTADOS
-    print("\n=== RESULTADOS ===")
+    print("\n=== RESULTADOS MI IPTV MUNDIAL ===")
     print(f"Canales: {len(live)}")
     print(f"Películas: {len(movies)}")
     print(f"Series: {len(series)}")
-    print(f"Total: {len(combined)}")
+    print(f"DE TODO: {len(de_todo)}")
+    print(f"Total lista general: {len(combined)}")
 
     if source_errors:
         print("\nAvisos:")
