@@ -1175,16 +1175,12 @@ https://vcp10.myplaytv.com/tvs/tvs/playlist.m3u8
 https://tv.mediacp.eu:8081/coraltv/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/OEsT0KN.png" group-title="DE TODO", F10 HD (El Alto / La Paz)
 https://tv2.bitstreaming.net:3235/multi_live/play.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/fE3BkcT.png" group-title="DE TODO", GigaVision (La Paz) [No 24/7]
-https://tv2.bitstreaming.net:3576/multi_live/play.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/ljKb0UX.png" group-title="DE TODO", CTV (La Paz)
 https://streaming.ctvbolivia.com/app/ctv/ts:master.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/U98Z5zn.png" group-title="DE TODO", Bolivisión LPZ (La Paz)
 http://158.172.155.130:8000/play/a0e8/index.m3u8
 #EXTINF:-1 tvg-logo="https://gia.tv/streams/logo/209672.png?1791344674" group-title="DE TODO", SPC Canal 15
 https://183.giatvcdn.com/giatv/giatv-1762252013SPC/1762252013SPC/playlist.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/fE3BkcT.png" group-title="DE TODO", GigaVision (Santa Cruz) [No 24/7]
-https://tv.bitstreaming.net:3348/multi_live/play.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/cECNvvr.png" group-title="DE TODO", RTP (La Paz)
 https://rtp.noxun.net/hls/stream.m3u8
 #EXTINF:-1 tvg-logo="https://i.ibb.co/8LCNYCXp/mixboliviatv.png" group-title="DE TODO", Mix Bolivia TVE [No 24.7]
@@ -1203,8 +1199,10 @@ https://183.giatvcdn.com/giatv/giatv-NEOGOGOPLAYTVE/NEOGOGOPLAYTVE/playlist.m3u8
 https://master.tucableip.com/univalletv/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/B9wg1zj.png" group-title="DE TODO", Unitel [No 24/7]
 https://play.agenciastreaming.com:8081/uniteltv/index.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/B9wg1zj.png" group-title="DE TODO", Unitel SD [No 24/7][Opc.2]
-http://200.59.191.177:8000/play/a0md/index.m3u8?hls
+#EXTINF:-1 tvg-logo="https://i.imgur.com/B9wg1zj.png" group-title="DE TODO", Unitel LPZ SD [No 24/7]
+http://190.181.61.93:8000/play/a00t/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/B9wg1zj.png" group-title="DE TODO", Unitel SCZ SD [No 24/7]
+http://190.181.61.93:8000/play/a00r/index.m3u8
 #EXTINF:-1 tvg-logo="" group-title="DE TODO", Canal 24 Multivision [No 24/7]
 https://183.giatvcdn.com/ssh101/ssh101/canalmulti24/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/I7yB176.png" group-title="DE TODO", Red TV Shop [No 24/7]
@@ -1219,8 +1217,12 @@ http://streamer1.streamhost.org:1935/salive/GMIredadvenirm/playlist.m3u8
 http://190.104.15.135/0.ts
 #EXTINF:-1 tvg-logo="" group-title="DE TODO",Red Chuquisaqueña
 https://183.giatvcdn.com/ssh101/ssh101/bolivianews/playlist.m3u8
-#EXTINF:-1 tvg-logo="" group-title="DE TODO",Bolivia TV
-http://200.59.191.177:8000/play/a0m4/index.m3u8?hls
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/8a/BTV_logo_2026.png" group-title="DE TODO",Bolivia TV
+https://hls.tvabierta.net/hls/boliviatv.m3u8
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/8a/BTV_logo_2026.png" group-title="DE TODO",Bolivia TV [Opc.2]
+http://158.172.155.130:8000/play/a0e4/index.m3u8
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/8a/BTV_logo_2026.png" group-title="DE TODO",Bolivia TV [Opc.3]
+http://190.181.61.93:8000/play/a001/index.m3u8
 #EXTINF:-1 tvg-logo="https://deltaboliviainstitucion.org/wp-content/uploads/2021/12/cropped-LOGO-DELTA-500-1.png" group-title="DE TODO", Delta TV SD [No 24/7]
 https://st.deltaboliviainstitucion.org:3778/hybrid/play.m3u8
 #EXTINF:-1 tvg-logo="https://i.ibb.co/MxJNPHsn/La-1.png" group-title="DE TODO", La 1 de TVE (Nacional)
@@ -1551,8 +1553,6 @@ https://183.giatvcdn.com/giatvplayout7/giatv-209474/playlist.m3u8
 https://183.giatvcdn.com/giatvplayout7/giatv-210634/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://gia.tv/streams/pstream/210596.png?1794536467" group-title="DE TODO",Delmi Galicia
 https://183.giatvcdn.com/giatvplayout7/giatv-210596/playlist.m3u8
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/QdsDrDZH/Animestation-(Shein-Media-2005).png" group-title="DE TODO",Anime Station (América Latina) [No 24/7]
-https://183.giatvcdn.com/giatv/giatv-livestreamingtv/livestreamingtv/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://janimotion.com/brand/janimotion-mark.svg" group-title="DE TODO",Janimotion (América Latina)
 https://janimotion.com/hls/janimotion/index.m3u8
 #EXTINF:-1 tvg-logo="https://web.archive.org/web/20240509182044if_/https://pbs.twimg.com/profile_images/1744338643957780480/24Kv02RD_400x400.jpg" group-title="DE TODO",Canal Locomotion - Primera señal [No 24/7]
@@ -1560,7 +1560,7 @@ http://146.19.49.197:81/live/loco.m3u8
 #EXTINF:-1 tvg-logo="https://web.archive.org/web/20240509182044if_/https://pbs.twimg.com/profile_images/1744338643957780480/24Kv02RD_400x400.jpg" group-title="DE TODO",Canal Locomotion - Primera señal [Opc.2][No 24/7]
 http://51.222.85.85:81/hls/loco/index.m3u8
 #EXTINF:-1 tvg-logo="https://web.archive.org/web/20240509182044if_/https://pbs.twimg.com/profile_images/1744338643957780480/24Kv02RD_400x400.jpg" group-title="DE TODO",Canal Locomotion - Segunda señal [No 24/7]
-https://183.giatvcdn.com/akamaissh101/ssh101/myevent2025/playlist.m3u8
+https://183.giatvcdn.com/ssh101/ssh101/myevent2025/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://web.archive.org/web/20240509182044if_/https://pbs.twimg.com/profile_images/1744338643957780480/24Kv02RD_400x400.jpg" group-title="DE TODO",Canal Locomotion - Segunda señal [Opc.2][No 24/7]
 https://183.giatvcdn.com/giatvplayout7/giatv-210075/playlist.m3u8
 #EXTINF:-1 tvg-logo="http://animezonetv.net/aztv.png" group-title="DE TODO",AnimeZone TV [No 24/7](América Latina)
@@ -2711,10 +2711,10 @@ https://dai.google.com/linear/hls/event/q2LqrJ2ZRP6UuyzA6X0VsA/master.m3u8
 https://live-evg5.tv360.bitel.com.pe/bitel/exitosa_abr/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/pu0BSB7.png" group-title="DE TODO", Exitosa TV (Perú - Nacional)[Opc.2]
 http://181.224.255.210:8001/play/a0sm/index.m3u8?hls
+#EXTINF:-1 tvg-logo="https://i.imgur.com/oBz3CgE.png" group-title="DE TODO", RPP TV (Perú - Nacional)
+http://190.108.83.69:8000/play/a01a/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/oBz3CgE.png" group-title="DE TODO",RPP TV HD (Perú - Nacional)[Opc.2]
 http://181.224.255.210:8001/play/a0r8/index.m3u8?hls
-#EXTINF:-1 tvg-logo="https://i.imgur.com/oBz3CgE.png" group-title="DE TODO",RPP TV HD (Perú - Nacional)[Opc.3]
-http://190.108.83.69:8000/play/a01a/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/oBz3CgE.png" group-title="DE TODO",TVPE Noticias (Perú)
 https://cdnhd.iblups.com/hls/902c1a0395264f269f1160efa00660e47.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/CNUZ6ig.png" group-title="DE TODO", TV Senado (Nacional)
