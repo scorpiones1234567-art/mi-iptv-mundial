@@ -1221,6 +1221,8 @@ https://www.dailymotion.com/video/xbrsofi
 https://www.dailymotion.com/video/xbpxgda
 #EXTINF:-1 tvg-logo="https://i.imgur.com/YOr1Oac.png" group-title="DE TODO", FTV (La Paz)
 https://master.tucableip.com/ftvhd/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.ibb.co/Kx70Dk3Z/ptv.jpg" group-title="DE TODO",PTV OnLine
+https://183.giatvcdn.com/giatv/giatv-PTVonLINE/PTVonLINE/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://unifranz.edu.bo/wp-content/themes/unifranz-web/public/images/logos/logo-light-min.442cee.svg" group-title="DE TODO", Unifranz [No 24/7]
 https://live.enhdtv.com:8081/8192/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/WGkMt2j.png" group-title="DE TODO",Red Advenir TV
@@ -2471,6 +2473,8 @@ https://183.giatvcdn.com/ssh101/ssh101/conecttv/playlist.m3u8
 https://183.giatvcdn.com/giatv/giatv-quilpueo196208/quilpueo196208/playlist.m3u8
 #EXTINF:-1 tvg-logo="" group-title="DE TODO", TAK TV
 https://183.giatvcdn.com/ssh101/ssh101/taktvonline/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://i.ibb.co/C5w6XFk4/Alternativa-TV.png" group-title="DE TODO", Alternativa TV [No 24/7]
+https://183.giatvcdn.com/ssh101/ssh101/alternativatvpe/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/z9JkxcM.png" group-title="DE TODO", Nitida TV [No 24/7]
 https://vs20.live.opencaster.com/bznudxxdtppv/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/Gwz78jZ.png" group-title="DE TODO", GikTVMX [No 24/7](México)
