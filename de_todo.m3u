@@ -176,7 +176,7 @@ http://181.119.177.253:8000/play/a03l/index.m3u8
 #EXTINF:-1 tvg-logo="https://www.tvq.tv/assets/img/logo.png" group-title="DE TODO",Canal TVQ LIVE HD
 https://cdn-us-east-prod-ingest-infra-dacast-com.akamaized.net/f84e45d42c07da1e7f6bf863d9447b7d/index.m3u8
 #EXTINF:-1 tvg-logo="https://tse1.mm.bing.net/th/id/OIP.mHBTOx8YSGwDYUNAbTBKUAHaCv?r=0&pid=Api" group-title="DE TODO",Teleflix HD [No 24/7]
-http://200.35.176.154:8000/play/a04r/index.m3u8
+http://167.250.223.26:9998/play/a04r/index.m3u8
 #EXTINF:-1 tvg-logo="https://tse4.mm.bing.net/th/id/OIP.TwgOEKeqbEeHsqxxxxrBYAHaHa?r=0&pid=Api" group-title="DE TODO",Telecable Salcaja
 http://186.33.61.182:8000/play/a05p/index.m3u8
 #EXTINF:-1 tvg-logo="https://gia.tv/streams/logo/212071.jpg?1788401700" group-title="DE TODO",World TV [No 24/7]
@@ -185,6 +185,8 @@ https://183.giatvcdn.com/giatv/giatv-worldtvgt/worldtvgt/playlist.m3u8
 https://live.streamhch.com/live/streams/hch1.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/2CB5ezq.png" group-title="DE TODO",HCH SD (Nacional) [Opc.2]
 http://200.59.191.177:8000/play/a0m6/index.m3u8?hls
+#EXTINF:-1 tvg-logo="https://i.imgur.com/2CB5ezq.png" group-title="DE TODO",HCH HD (Nacional) [Dailymotion]
+https://www.dailymotion.com/video/x81za5c
 #EXTINF:-1 tvg-id="Canal5.hn" tvg-logo="https://i.imgur.com/4hEYFa9.png" group-title="DE TODO",Canal 5 El Líder HD (Nacional)
 https://mdstrm.com/live-stream-playlist/6287fdc9303e3008289ab711.m3u8
 #EXTINF:-1 tvg-id="Canal5.hn" tvg-logo="https://i.imgur.com/4hEYFa9.png" group-title="DE TODO",Canal 5 El Líder HD (Nacional)[Opc.2]
@@ -659,10 +661,10 @@ http://181.224.255.210:8001/play/a0pj/index.m3u8?hls
 http://200.59.191.177:8000/play/a0q0/index.m3u8?hls
 #EXTINF:-1 tvg-logo="https://i.imgur.com/bZnDDPH.png" group-title="DE TODO", Willax TV HD (Nacional)
 http://181.224.255.210:8001/play/a0s7/index.m3u8?hls
-#EXTINF:-1 tvg-logo="https://i.imgur.com/bZnDDPH.png" group-title="DE TODO", Willax TV SD(Nacional)[Opc.2]
+#EXTINF:-1 tvg-logo="https://i.imgur.com/bZnDDPH.png" group-title="DE TODO", Willax TV SD (Nacional) [Opc.2]
 http://45.186.254.75:8000/play/a0ex/index.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/bZnDDPH.png" group-title="DE TODO", Willax TV SD(Nacional)[Opc.3]
-http://38.224.231.47:8000/play/a06r/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/bZnDDPH.png" group-title="DE TODO", Willax TV HD (Nacional) [Opc.3]
+http://45.173.201.19:5000/play/a00v/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/uQhEDES.png" group-title="DE TODO",Panamericana Televisión HD
 http://181.224.255.210:8001/play/a0s5/index.m3u8?hls
 #EXTINF:-1 tvg-logo="https://i.imgur.com/uQhEDES.png" group-title="DE TODO",Panamericana Televisión SD [Opc.2]
@@ -673,8 +675,6 @@ http://181.224.200.5:2277/play/kkio/index.m3u8
 https://videoserver.tmcreativos.com:2020/hls/tvcosmos/tvcosmos.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/JZ1oTM2.png" group-title="DE TODO",A1 TV HD [No 24/7]
 https://vivatv.juanjuiserver.com:3251/live/a1televisionlive.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/JZ1oTM2.png" group-title="DE TODO",A1 TV HD [No 24/7][Opc.2]
-http://181.224.255.210:8001/play/a0rz/index.m3u8?hls
 #EXTINF:-1 tvg-logo="https://i.imgur.com/Bt0yGtw.jpeg" group-title="DE TODO",Antena 1 HD
 https://tv.canala1.com:8081/web/video.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/Bt0yGtw.jpeg" group-title="DE TODO",Antena 1 HD [Opc.2]
@@ -727,10 +727,6 @@ https://video2.lhdserver.es/cableperu/live.m3u8
 https://live-evg5.tv360.bitel.com.pe/bitel/nativa/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/Y9k9XSO.png" group-title="DE TODO", Nativa TV HD (Santiago) [Opc.2]
 https://oneplay.iptvperu.tv:1936/static/nativa1.stream/playlist.m3u8
-#EXTINF:-1 tvg-logo="https://img-evg3.tv360.bitel.com.pe/peru-image/2026/02/17/04/1771276353200/ba02446bf189_480_270.png" group-title="DE TODO", Once TV Digital
-https://live-evg10.tv360.bitel.com.pe/bitel/canal11/playlist.m3u8
-#EXTINF:-1 tvg-logo="https://img-evg3.tv360.bitel.com.pe/peru-image/2026/02/17/04/1771276353200/ba02446bf189_480_270.png" group-title="DE TODO", Once TV Digital [Opc.2]
-https://183.giatvcdn.com/giatv/giatv-ojodigital/ojodigital/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.ibb.co/fV4GrX6B/canal-39-tv.png" group-title="DE TODO",Canal 39 TV HD (Ica) [No 24/7]
 https://vivatv.juanjuiserver.com:3282/live/canal39live.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/FiptbGQ.png" group-title="DE TODO", Vía Televisión HD [No 24/7] (Tarapoto - San Martín)
@@ -956,8 +952,10 @@ http://181.209.105.115:2525/play/cinear/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/88MVgwX.png" group-title="DE TODO",CineAR [Opc.2]
 http://200.50.155.180:8010/play/a0h12/index.m3u8
 #EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/a/af/SNT_LOGO.jpg" group-title="DE TODO",SNT Paraguay HD
-https://tv.mitvparaguay.com/hls?id=snt&device_id=dev-461bff6d-cacc-48ea-94b8-02271afb3525
+https://tv.mitvparaguay.com/hls?id=snt
 #EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/a/af/SNT_LOGO.jpg" group-title="DE TODO",SNT Paraguay HD [Opc.2]
+http://45.184.109.10/live/69393EAE6ADBC65A68F942022362A202/113.m3u8
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/a/af/SNT_LOGO.jpg" group-title="DE TODO",SNT Paraguay HD [Opc.3]
 http://45.170.130.224:8000/play/a013/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/6lVrFvb.png" group-title="DE TODO",Telefuturo Paraguay HD [Geo-Blocked]
 https://zn1tf.desdeparaguay.net/telefuturo/telefuturo_py_alta/playlist.m3u8?admin=tvaccion
@@ -966,7 +964,7 @@ https://rds3tf.desdeparaguay.net/telefuturo/telefuturo_py_alta/chunks.m3u8?admin
 #EXTINF:-1 tvg-logo="https://i.imgur.com/vEMnZF4.png" group-title="DE TODO",GEN Paraguay HD
 http://45.170.130.224:8000/play/a04j/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/vEMnZF4.png" group-title="DE TODO",GEN Paraguay SD [Opc.2]
-https://tv.mitvparaguay.com/hls?id=gen&device_id=dev-461bff6d-cacc-48ea-94b8-02271afb3525
+https://tv.mitvparaguay.com/hls?id=gen
 #EXTINF:-1 tvg-logo="https://i.imgur.com/R9E6jEC.png" group-title="DE TODO" ,Invasiva TV HD
 https://tv-omega-nine.vercel.app/hls/live.m3u8
 #EXTINF:-1 tvg-logo="https://i.ibb.co/rwkpQx6/unnamed-2.png" group-title="DE TODO" ,Cáritas TV HD
@@ -977,6 +975,8 @@ https://video.hostingcaaguazu.com:19360/delreytv/delreytv.m3u8
 https://copacotf.desdeparaguay.net/latele/latele_py_alta/playlist.m3u8?admin=tvaccion
 #EXTINF:-1 tvg-id="latele.py" tvg-logo="https://i.imgur.com/Qcf6Qev.png" group-title="DE TODO" ,Latele SD [Opc.2]
 https://rds3tf.desdeparaguay.net/latele/latele_py_baja/playlist.m3u8?admin=tvaccion
+#EXTINF:-1 tvg-id="AmericaParaguay.py" https://i.imgur.com/0COKxet.png" group-title="DE TODO" ,America TV
+https://tv.mitvparaguay.com/hls?id=americatv
 #EXTINF:-1 tvg-logo="https://i.imgur.com/kEcOYML.png" group-title="DE TODO" ,Monumental TV HD
 https://copacogen.desdeparaguay.net/monumentaltv/monumentaltv_med/playlist.m3u8?admin=tvaccion
 #EXTINF:-1 tvg-logo="https://i.imgur.com/kEcOYML.png" group-title="DE TODO" ,Monumental TV HD [Opc.2]
@@ -1001,6 +1001,8 @@ https://tigocloud.desdeparaguay.net/800tv/800tv/playlist.m3u8
 https://d174axghh54kh0.cloudfront.net/ts:abr.m3u8
 #EXTINF:-1 tvg-id="C9N.py" tvg-logo="https://i.imgur.com/iXkwP31.png" group-title="DE TODO" ,C9N HD [Opc.2]
 http://181.79.87.130:8000/play/a0c1/index.m3u8
+#EXTINF:-1 tvg-id="C9N.py" tvg-logo="https://i.imgur.com/iXkwP31.png" group-title="DE TODO" ,C9N HD [Opc.3]
+https://tv.mitvparaguay.com/hls?id=c9n
 #EXTINF:-1 tvg-logo="https://i.imgur.com/tg6EjTU.png" group-title="DE TODO" ,AGR FM TV
 https://tigocloud.desdeparaguay.net/agrtv/agrtv/playlist.m3u8
 #EXTINF:-1 tvg-logo="" group-title="DE TODO" ,Red Informativa
@@ -1017,6 +1019,8 @@ https://rds3.desdeparaguay.net/mitv/mitv/playlist.m3u8
 https://video.hostingcaaguazu.com:19360/uniradiotv/uniradiotv.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/ah8n7jL.png" group-title="DE TODO"´,Canal Pro HD [No 24/7]
 https://www.desde-paraguay.com/pro.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/OqfBMGy.png" group-title="DE TODO" ,ABC TV HD [No 24/7]
+https://tv.mitvparaguay.com/hls?id=abctv
 #EXTINF:-1 tvg-logo="https://i.imgur.com/oxPEZas.png" group-title="DE TODO" ,En Lengua de Senas TV HD [No 24/7]
 https://cloudtv.streaming.com.py/lenguasdesenas/lenguasdesenas/chunklist.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/8IRBA9h.png" group-title="DE TODO" ,Occidental TV HD [No 24/7]
@@ -1205,8 +1209,6 @@ https://play.agenciastreaming.com:8081/uniteltv/index.m3u8
 http://200.59.191.177:8000/play/a0md/index.m3u8?hls
 #EXTINF:-1 tvg-logo="" group-title="DE TODO", Canal 24 Multivision [No 24/7]
 https://183.giatvcdn.com/ssh101/ssh101/canalmulti24/playlist.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/I7yB176.png" group-title="DE TODO", Red TV Shop [No 24/7]
-https://master.tucableip.com/redtvshop/index.m3u8
 #EXTINF:-1 tvg-logo="https://seeklogo.com/images/R/red-uno-de-bolivia-logo-1E61FF5AC3-seeklogo.com.png" group-title="DE TODO", Red Uno HD SCZ
 http://190.181.61.93:8000/play/a002/index.m3u8
 #EXTINF:-1 tvg-logo="https://seeklogo.com/images/R/red-uno-de-bolivia-logo-1E61FF5AC3-seeklogo.com.png" group-title="DE TODO", Red Uno HD SCZ [Dailymotion]
@@ -1695,8 +1697,6 @@ https://cdn.40mediagroup.com/live/c7eds/ENT_Classics/SA_LIVE_hls_enc/master.m3u8
 https://cdn.40mediagroup.com/live/c7eds/ENT_Life/SA_LIVE_hls_enc/master.m3u8
 #EXTINF:-1 tvg-logo="https://img-evg3.tv360.bitel.com.pe/peru-image/2026/11/06/23/1793981672636/d7b724f5088f_480_270.jpeg" group-title="DE TODO",+ Movie Accion
 https://live-evg13.tv360.bitel.com.pe/bitel/+movieaccion/playlist.m3u8
-#EXTINF:-1 tvg-logo="https://img-evg3.tv360.bitel.com.pe/peru-image/2026/05/26/23/177981261781/1666ae69c89b_480_270.png" group-title="DE TODO",Fillka TV
-https://live-evg5.tv360.bitel.com.pe/bitel/fillka/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/N09XXSpN/1125-294x165-FFFFFF.png" group-title="DE TODO", FMTV Mundo (Cadena Internacional)
 https://s2.tvdatta.com:3307/live/fmtvmatrizlive.m3u8
 #EXTINF:-1 tvg-logo="https://i.ibb.co/5XGNHpRF/Ipersonica.png" group-title="DE TODO", Ipersonica
@@ -2101,6 +2101,8 @@ http://179.63.6.216:8000/play/a00p
 http://45.70.201.81:8000/play/a011/index.m3u8
 #EXTINF:-1 tvg-logo="https://hypetv.live/assets/avi.png" group-title="DE TODO",AVI Channel
 http://181.79.92.47:18000/play/a00g/index.m3u8
+#EXTINF:-1 tvg-logo="" group-title="DE TODO",CA1
+http://200.60.124.25:8000/play/a0kp/index.m3u8
 #EXTINF:-1 tvg-logo="" group-title="DE TODO",Canal Holliwood BR SD
 http://5.134.87.3:8001/play/a03h/index.m3u8
 #EXTINF:-1 tvg-logo="" group-title="DE TODO",Canal Holliwood BR HD
