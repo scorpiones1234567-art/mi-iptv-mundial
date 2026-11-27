@@ -17,11 +17,11 @@ https://signal.teleon.live/play/M-SFF5mIPhehGo_D8i6uMR6Bd-27NSk1CyGcC_RH3IU9KPSy
 http://181.119.177.253:8000/play/a05y/index.m3u8
 #EXTINF:-1 tvg-id="Canal6.sv" tvg-logo="https://i.imgur.com/M4muPLK.png" group-title="DE TODO",Canal 6 TCS HD [Opc.3]
 http://45.228.234.62:8000/play/a03g/index.m3u8
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/TPgVXb8p/SVPlus.png" group-title="DE TODO",SV+ SD
+#EXTINF:-1 tvg-id="VTV.sv" tvg-logo="https://i.postimg.cc/TPgVXb8p/SVPlus.png" group-title="DE TODO",SV+ SD
 https://signal.teleon.live/play/mZVS9wM6kHbL3OlEyPnCwt6gF2314LegOk91sT6waf-R3KbUWMkrtvuPXkbEyhYQyHTrPWB7Cx8S9rnDsl8-ANQ-1CPExwggchQ.m3u8?token=test
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/TPgVXb8p/SVPlus.png" group-title="DE TODO",SV+ SD [Opc.2]
+#EXTINF:-1 tvg-id="VTV.sv" tvg-logo="https://i.postimg.cc/TPgVXb8p/SVPlus.png" group-title="DE TODO",SV+ SD [Opc.2]
 http://186.33.0.57:8000/play/a02q/index.m3u8
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/TPgVXb8p/SVPlus.png" group-title="DE TODO",SV+ SD [Opc.3]
+#EXTINF:-1 tvg-id="VTV.sv" tvg-logo="https://i.postimg.cc/TPgVXb8p/SVPlus.png" group-title="DE TODO",SV+ SD [Opc.3]
 http://45.228.234.62:8000/play/a03w/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/mdfiWG9.png" group-title="DE TODO",Canal 3 Impresionante SD
 https://cloud2.streaminglivehd.com:2020/hls/8036/8036.m3u8
@@ -860,8 +860,6 @@ https://tv.ulagos.cl/web/live.m3u8
 #EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Telefe_%28nuevo_logo%29.png/960px-Telefe_%28nuevo_logo%29.png" group-title="DE TODO",Telefe HD [Geo-Blocked]
 https://telefe.argtelemax.workers.dev/
 #EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Telefe_%28nuevo_logo%29.png/960px-Telefe_%28nuevo_logo%29.png" group-title="DE TODO",Telefe SD
-http://45.173.231.22:8000/play/a053/index.m3u8
-#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Telefe_%28nuevo_logo%29.png/960px-Telefe_%28nuevo_logo%29.png" group-title="DE TODO",Telefe SD [Opc.2]
 https://m3u.tvcluboficial.com/free/ReachBot/Kip/874.m3u8
 #EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Telefe_%28nuevo_logo%29.png/960px-Telefe_%28nuevo_logo%29.png" group-title="DE TODO",Telefe Buenos Aires HD
 http://45.134.141.161:2200/ARG/TELEFE_HD/index.m3u8
@@ -1557,7 +1555,7 @@ https://cdn.global.elektamedia.com/live/c7eds/Primired/SA_LIVE_hls_enc/master.m3
 http://181.78.121.15:8000/play/a00h/index.m3u8
 #EXTINF:-1 tvg-logo="https://neotv.energeek.cl/assets/img/channels/max-anime-3-c.png" group-title="DE TODO",Max Anime (América Latina)
 https://cdnlive.klicgo.net/maxanime/live/playlist_dvr.m3u8
-#EXTINF:-1 tvg-logo="https://img-evg3.tv360.bitel.com.pe/peru-image/2026/11/06/23/1793981903574/a81c20e9ef21_480_270.jpeg" group-title="DE TODO",Anime TV (América Latina)
+#EXTINF:-1 tvg-id="AZTV" tvg-logo="https://img-evg3.tv360.bitel.com.pe/peru-image/2026/11/06/23/1793981903574/a81c20e9ef21_480_270.jpeg" group-title="DE TODO",Anime TV (América Latina)
 https://live-evg13.tv360.bitel.com.pe/bitel/animetv/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://gia.tv/streams/pstream/209474.png?1794536202" group-title="DE TODO",Delmi
 https://183.giatvcdn.com/giatvplayout7/giatv-209474/playlist.m3u8
@@ -1567,7 +1565,9 @@ https://183.giatvcdn.com/giatvplayout7/giatv-210634/playlist.m3u8
 https://183.giatvcdn.com/giatvplayout7/giatv-210596/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://janimotion.com/brand/janimotion-mark.svg" group-title="DE TODO",Janimotion (América Latina)
 https://janimotion.com/hls/janimotion/index.m3u8
-#EXTINF:-1 tvg-logo="https://web.archive.org/web/20240509182044if_/https://pbs.twimg.com/profile_images/1744338643957780480/24Kv02RD_400x400.jpg" group-title="DE TODO",Canal Locomotion - Segunda señal [Opc.2][No 24/7]
+#EXTINF:-1 tvg-id="Locomotion" tvg-logo="https://web.archive.org/web/20240509182044if_/https://pbs.twimg.com/profile_images/1744338643957780480/24Kv02RD_400x400.jpg" group-title="DE TODO",Canal Locomotion - Primera señal [No 24/7]
+http://146.19.49.197:81/live/loco.m3u8
+#EXTINF:-1 tvg-logo="https://web.archive.org/web/20240509182044if_/https://pbs.twimg.com/profile_images/1744338643957780480/24Kv02RD_400x400.jpg" group-title="DE TODO",Canal Locomotion - Segunda señal [No 24/7]
 https://183.giatvcdn.com/giatvplayout7/giatv-210075/playlist.m3u8
 #EXTINF:-1 tvg-logo="http://animezonetv.net/aztv.png" group-title="DE TODO",AnimeZone TV [No 24/7](América Latina)
 http://animezonetv.net/hls/stream.m3u8
